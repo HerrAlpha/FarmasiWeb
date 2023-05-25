@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->text('address');
             $table->string('password')->default(Hash::make(123));
+            $table->string('otp')->nullable();
             $table->string('role')->default('Pasien');
             $table->boolean('status')->default('1');
             $table->rememberToken();
