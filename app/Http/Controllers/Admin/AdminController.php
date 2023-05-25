@@ -22,6 +22,11 @@ class AdminController extends Controller
         $accObject = New User;
         $userAcc['username'] = $accObject->apodokusername($request['name'], $request['role']);
         $userAcc['role'] = $request['role'];
+        if ($userAcc['role'] == 'Dokter') {
+            $userAcc['avatar'] = 'doctor.jpg';
+        } else {
+            $userAcc['avatar'] = 'apoteker.jpeg';
+        }
 
         $user = User::create($userAcc);
 
