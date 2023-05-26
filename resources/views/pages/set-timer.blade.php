@@ -36,6 +36,7 @@
                     <th scope="col" style="width: 20%; text-align: center">Status</th>
                     <th scope="col" style="width: 20%">Dibawah Pengawasan</th>
                     <th scope="col" style="width: 20%; text-align: center">Klasifikasi</th>
+                    <th scope="col" style="width: 10%; text-align: center">Opsi</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +61,11 @@
                         </td>
                         <td style="text-align: center">
                             {!! $d->classification($d->klasifikasi) !!}
+                        </td>
+                        <td style="text-align: center">
+                            <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
                         </td>
                 </tr>
                 @endforeach

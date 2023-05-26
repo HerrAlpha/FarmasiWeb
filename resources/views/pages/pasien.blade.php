@@ -39,15 +39,17 @@
         <input class="form-control input-field mt-3" id="searchbarpas" onkeyup="search_pasien()" type="text" name="search" placeholder="Cari Data Pasien.. " style="width: 50%">
     </div> --}}
 
+    <div class="d-flex align-items-center">
     <table class="table table-striped mt-3">
         <thead>
         <tr>
             <th scope="col" style="width: 20%">Nama & UID</th>
             <th scope="col" style="width: 20%">Nama Obat</th>
-            <th scope="col" style="width: 10%">Stok obat</th>
+            <th scope="col" style="width: 5%">Stok obat</th>
             <th scope="col" style="width: 15%">Pengawasan</th>
-            <th scope="col" style="width: 15%; text-align: center">Last Login</th>
+            <th scope="col" style="width: 10%; text-align: center">Last Login</th>
             <th scope="col" style="width: 20%; text-align: center">Klasifikasi</th>
+            <th scope="col" style="width: 20%; text-align: center">Opsi</th>
         </tr>
         </thead>
         <tbody>
@@ -84,12 +86,17 @@
                 <td style="text-align: center">
                     {!! $d->classification($d->klasifikasi) !!}
                 </td>
+                <td style="text-align: center">
+                    <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
             </tr>
             @endforeach
 
         </tbody>
     </table>
-
+    </div>
 
 
 

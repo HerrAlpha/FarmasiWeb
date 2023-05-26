@@ -81,12 +81,12 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ Request::is('settings') ? '' : 'collapsed' }}" href="/settings">
                 <i class="bi bi-gear"></i>
                 <span>Pengaturan</span>
             </a>
-        </li><!-- End Profile Page Nav -->
+        </li><!-- End Profile Page Nav --> --}}
         @endif
     @endauth
 

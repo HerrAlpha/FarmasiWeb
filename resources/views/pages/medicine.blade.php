@@ -33,53 +33,43 @@
             <thead>
                 <tr>
                     <th scope="col" style="width: 25%">Nama</th>
-                    <th scope="col" style="width: 15%; text-align: center">Tanggal Check-Up</th>
-                    <th scope="col" style="width: 10%; text-align: center">Reminder</th>
-                    <th scope="col" style="width: 25%">Nama Obat</th>
+                    <th scope="col" style="width: 20%">Nama Obat</th>
+                    <th scope="col" style="width: 15%; text-align: center">Stock Obat</th>
                     <th scope="col" style="width: 20%; text-align: center">Klasifikasi</th>
+                    <th scope="col" style="width: 10%; text-align: center">Opsi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data as $d)
                 <tr>
                     <td>
-                        <a href="/detail-pasien-{{ $d->slug }}" class="psn_dtl">
+                        <a href="/edit-pasien-{{ $d->slug }}" class="psn_dtl">
                             {{ $d->name }}
                         </a>
                     </td>
-                    <td style="text-align: center">
-                        @if ($d->status == '0')
-                            <div class="u-j">
-                                <span class="u-jadwal">Belum Terjadwal</span>
-                            </div>
-                        @else
-                            @foreach ( $d->schedule($d->id) as $s )
-                                {{ $s->schedule }}
-                            @endforeach
-                        @endif
-
-                    </td>
-                    <td style="text-align: center">
-                        @if ($d->status == '0')
-                            <div class="u-j">
-                                <a href="/detail-pasien-{{ $d->slug }}" class="u-remind">
-                                    Buat Jadwal
-                                </a>
-                            </div>
-                        @else
-                            Sudah Terjadwalkan
-                        @endif
-
-                    </td>
                     <td>
-                        @foreach ( $d->obatTest($d->id) as $obat )
+                        @foreach ( $d->obatHabis($d->id) as $obat )
                         <div class="u_name">
                             {{ $obat->nama_obat }}
                         </div>
                         @endforeach
+
+                    </td>
+                    <td style="text-align: center">
+                        @foreach ( $d->obatHabis($d->id) as $obat )
+                            <div class="u_name">
+                                {{ $obat->jumlah_obat }}
+                            </div>
+                        @endforeach
+
                     </td>
                     <td style="text-align: center">
                         {!! $d->classification($d->klasifikasi) !!}
+                    </td>
+                    <td style="text-align: center">
+                        <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

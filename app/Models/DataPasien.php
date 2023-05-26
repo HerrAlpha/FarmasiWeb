@@ -32,6 +32,14 @@ class DataPasien extends Model
         ->get();
     }
 
+    public function obatHabis($id){
+        return DB::table('data_jadwal_obats')
+        ->selectRaw('*')
+        ->where('data_id_pasien', '=', $id)
+        ->where('jumlah_obat', '<=', '5')
+        ->get();
+    }
+
     public function labTest($id){
         return DB::table('data_labs')
         ->selectRaw('*')

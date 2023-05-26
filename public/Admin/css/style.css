@@ -613,6 +613,13 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
 }
 
+.edit-pasien{
+    border-radius: 10px;
+    background-color: #7524B3;
+    color: white;
+    border: none;
+}
+
 .input-icons {
     width: 100%;
     margin-bottom: 10px;
