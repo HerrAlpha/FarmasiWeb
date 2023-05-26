@@ -434,7 +434,7 @@
                               <div class="mb-3 row">
                                 <label for="inputname" class="col-sm-4 col-form-label">Jumlah Obat</label>
                                 <div class="align-items-end col-sm-3">
-                                  <input type="text" name="jumlah_obat" class="form-control int-lbl" id="bb" oninput="numberOnly(this.id);" required>
+                                  <input type="number" name="jumlah_obat" class="form-control int-lbl" id="bb" oninput="numberOnly(this.id);" required>
                                 </div>
                               </div>
 

@@ -86,7 +86,7 @@
 
                                     <h5 class="header-dpasien">Nomor Induk Kewarganegaraan</h5>
                                     <span class="dpasien">
-                                        <input type="text" name="nik" class="form-control int-lbl" id="nik" oninput="numberOnly(this.id);" maxlength="16" value="{{ $d->nik }}" required>
+                                        <input type="number" name="nik" class="form-control int-lbl" id="nik" oninput="numberOnly(this.id);" maxlength="16" value="{{ $d->nik }}" required>
                                     </span>
 
                                     <h5 class="header-dpasien">Nama Lengkap</h5>
@@ -106,12 +106,12 @@
 
                                     <h5 class="header-dpasien">Emergency Contact</h5>
                                     <span class="dpasien">
-                                        <input type="text" name="" class="form-control int-lbl" id="" value="{{ $d->user->phone_number }}" required>
+                                        <input type="number" name="" class="form-control int-lbl" id="" value="{{ $d->user->phone_number }}" required>
                                     </span>
 
                                     <h5 class="header-dpasien">Helper</h5>
                                     <span class="dpasien">
-                                        <input type="text" name="" class="form-control int-lbl" id="" value="{{ $d->user->phone_number }}" required>
+                                        <input type="number" name="" class="form-control int-lbl" id="" value="{{ $d->user->phone_number }}" required>
                                     </span>
                                 @endforeach
                             </div>
@@ -179,7 +179,7 @@
                         <h5 class="header-dpasien">Berat Badan</h5>
                         <div class="row">
                             <div class="align-items-end col-1">
-                                <input type="text" name="bb" class="form-control int-lbl" id="" value="{{ $d->bb }}" required>
+                                <input type="number" name="bb" class="form-control int-lbl" id="" value="{{ $d->bb }}" required>
                             </div>
 
                             <label for="inputname" class="col-1 col-form-label drh"> Kg</label>
@@ -188,7 +188,7 @@
                         <h5 class="header-dpasien">Tinggi Badan</h5>
                         <div class="row">
                             <div class="align-items-end col-1">
-                                <input type="text" name="tb" class="form-control int-lbl" id="" value="{{ $d->tb }}" required>
+                                <input type="number" name="tb" class="form-control int-lbl" id="" value="{{ $d->tb }}" required>
                             </div>
 
                             <label for="inputname" class="col-1 col-form-label drh"> cm</label>
@@ -197,13 +197,13 @@
                         <h5 class="header-dpasien">Tekanan Darah</h5>
                         <table>
                             <td style="width: 7%">
-                                <input type="text" name="td_tds" class="form-control int-lbl" id="" value="{{ $d->td_tds }}" required>
+                                <input type="number" name="td_tds" class="form-control int-lbl" id="" value="{{ $d->td_tds }}" required>
                             </td>
                             <td style="width: 1%">
                                 <label for="inputname" class="col-1 col-form-label drh"> / </label>
                             </td>
                             <td style="width: 7%">
-                                <input type="text" name="td_tdd" class="form-control int-lbl" id="" value="{{ $d->td_tdd }} " required>
+                                <input type="number" name="td_tdd" class="form-control int-lbl" id="" value="{{ $d->td_tdd }} " required>
                             </td>
                             <td>
                                 <label for="inputname" class="col-1 col-form-label drh">  mmHg</label>
@@ -213,7 +213,7 @@
                         <h5 class="header-dpasien">Heart Rate</h5>
                         <div class="row">
                             <div class="align-items-end col-1">
-                                <input type="text" name="h_rate" class="form-control int-lbl" id="" value="{{ $d->h_rate }}" required>
+                                <input type="number" name="h_rate" class="form-control int-lbl" id="" value="{{ $d->h_rate }}" required>
                             </div>
                         </div>
 
@@ -860,7 +860,7 @@
                           <div class="mb-3 row">
                             <label for="inputname" class="col-sm-4 col-form-label">Jumlah Obat</label>
                             <div class="align-items-end col-sm-3">
-                              <input type="text" name="jumlah_obat" class="form-control int-lbl" id="bb" oninput="numberOnly(this.id);" required>
+                              <input type="number" name="jumlah_obat" class="form-control int-lbl" id="bb" oninput="numberOnly(this.id);" required>
                             </div>
                           </div>
 
