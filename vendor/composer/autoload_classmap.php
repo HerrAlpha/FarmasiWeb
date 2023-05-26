@@ -21,6 +21,7 @@ return array(
     'App\\Factories\\ConfigurationFactory' => $vendorDir . '/laravel/pint/app/Factories/ConfigurationFactory.php',
     'App\\Factories\\ConfigurationResolverFactory' => $vendorDir . '/laravel/pint/app/Factories/ConfigurationResolverFactory.php',
     'App\\Fixers\\LaravelPhpdocAlignmentFixer' => $vendorDir . '/laravel/pint/app/Fixers/LaravelPhpdocAlignmentFixer.php',
+    'App\\Http\\Controllers\\API\\Patient\\PatientController' => $baseDir . '/app/Http/Controllers/API/Patient/PatientController.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',

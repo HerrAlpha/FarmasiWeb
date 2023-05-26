@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4e656b812c48026443ab69e7f3d51343
+class ComposerStaticInitdc2bc3f6b9451826ab3adfca5a13caf2
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -360,8 +360,8 @@ class ComposerStaticInit4e656b812c48026443ab69e7f3d51343
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -587,6 +587,7 @@ class ComposerStaticInit4e656b812c48026443ab69e7f3d51343
         'App\\Factories\\ConfigurationFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationFactory.php',
         'App\\Factories\\ConfigurationResolverFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationResolverFactory.php',
         'App\\Fixers\\LaravelPhpdocAlignmentFixer' => __DIR__ . '/..' . '/laravel/pint/app/Fixers/LaravelPhpdocAlignmentFixer.php',
+        'App\\Http\\Controllers\\API\\Patient\\PatientController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Patient/PatientController.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -6894,10 +6895,10 @@ class ComposerStaticInit4e656b812c48026443ab69e7f3d51343
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4e656b812c48026443ab69e7f3d51343::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4e656b812c48026443ab69e7f3d51343::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit4e656b812c48026443ab69e7f3d51343::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit4e656b812c48026443ab69e7f3d51343::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdc2bc3f6b9451826ab3adfca5a13caf2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdc2bc3f6b9451826ab3adfca5a13caf2::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitdc2bc3f6b9451826ab3adfca5a13caf2::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitdc2bc3f6b9451826ab3adfca5a13caf2::$classMap;
 
         }, null, ClassLoader::class);
     }

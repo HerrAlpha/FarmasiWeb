@@ -66,16 +66,15 @@ Route::middleware([
 
         Route::get('/edit-pasien-{slug}', [HomeController::class, 'edit_pasien'])->name('pasien');
 
-        Route::post('/save-data-pasien', [HomeController::class, 'store_edit'])->name('pasien');
+        Route::get('/save-data-pasien', [HomeController::class, 'store_edit'])->name('pasien');
 
         Route::get('/keluhan-pasien-{slug}', [HomeController::class, 'edit_pasien'])->name('keluhan-pasien');
 
         Route::get('/timer-obat-pasien-{slug}', [HomeController::class, 'detail_pasien'])->name('set-timer');
 
-        Route::post('/submit-obat', [ObatController::class, 'store_med'])->name('set-timer');
+        Route::post('/submit-obat', [ObatController::class, 'store_med']);
 
-        Route::post('/delete-med', [ObatController::class, 'delete_med'])->name('set-timer');
-
+        Route::post('/delete-med', [ObatController::class, 'delete_med']);
         Route::post('/submit-datalab', [LabController::class, 'store_datalab'])->name('store-datalab');
 
         Route::post('/update-datalab', [LabController::class, 'update_datalab'])->name('update-datalab');
