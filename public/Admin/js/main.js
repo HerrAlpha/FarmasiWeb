@@ -34,7 +34,7 @@ function addFields(){
         var input = document.createElement("input");
         input.id = "waktu";
         input.type = "time";
-        input.name = "waktu";
+        input.name = "waktu " + i;
         input.className = "form-control int-lbl";
         container.appendChild(input);
         // Append a line break

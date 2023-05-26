@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_obat');
             $table->string('dosis_harian');
             $table->string('waktu_minum');
-            $table->time('waktu');
+            $table->string('waktu');
             $table->string('jumlah_obat');
             $table->string('pengawasan')->default('-');
             $table->timestamps();

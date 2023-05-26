@@ -84,6 +84,13 @@ class ObatController extends Controller
     public function store_med(Request $request){
         $dataobat = request()->all();
 
+        $waktuminum = array();
+
+        for ($i=0; $i < $request->dosis_harian; $i++) {
+            $waktuminum[] = request("waktu_$i");
+        }
+        $dataobat['waktu'] = implode(",",$waktuminum);
+
         $slug = $request->slug;
 
         $user = DataPasien::where('slug', $slug)->value('id');
