@@ -88,14 +88,20 @@ class ObatController extends Controller
 
         for ($i=0; $i < $request->dosis_harian; $i++) {
             $waktuminum[] = request("waktu_$i");
-        }
-        $dataobat['waktu'] = implode(",",$waktuminum);
 
-        $slug = $request->slug;
+            // Insert data each waktu
+            $dataobat['waktu'] = $waktuminum[$i];
+            $slug = $request->slug;
 
         $user = DataPasien::where('slug', $slug)->value('id');
         $dataobat['data_id_pasien'] = $user;
         $newdataobat = DataJadwalObat::create($dataobat);
+            
+        }
+        
+        
+
+        
         return Redirect::back()->with('success', 'Data berhasil ditambahkan!');
     }
 

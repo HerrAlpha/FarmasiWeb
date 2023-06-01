@@ -22,7 +22,8 @@ class PatientController extends Controller
             if (User::where('username', $request->username)->first() == null) {
                 return response()->json([
                     'status' => 'Error',
-                    'message' => 'Username tidak ditemukan'
+                    'message' => 'Username tidak ditemukan',
+                    'status_code' => 401
                 ], 401);
             }
 
@@ -31,14 +32,16 @@ class PatientController extends Controller
                 if ($user->password != $request->password) {
                     return response()->json([
                         'status' => 'Error',
-                        'message' => 'Password salah'
+                        'message' => 'Password salah',
+                        'status_code' => 401
                     ], 401);
                 }
             }
 
             return response()->json([
                 'status' => 'Error',
-                'message' => 'Unauthorized'
+                'message' => 'Unauthorized',
+                'status_code' => 401
             ], 401);
         }
 
@@ -47,7 +50,8 @@ class PatientController extends Controller
         if($user->role != 'Pasien'){
             return response()->json([
                 'status' => 'Error',
-                'message' => 'Unauthorized'
+                'message' => 'Unauthorized',
+                'status_code' => 401
             ], 401);
         } else {
             $token = $user->createToken('auth_sanctum', ['pasien'])->plainTextToken;
@@ -56,17 +60,27 @@ class PatientController extends Controller
                 'status' => 'Success',
                 'message' => 'Login Success',
                 'user' => $user,
-                'access_token' => $token
+                'access_token' => $token,
+                'status_code' => 200
             ], 200);
         }
     }
 
     public function keluar(Request $request){
+        if (!$request->user()->currentAccessToken()) {
+            return response()->json([
+                'status' => 'Error',
+                'message' => 'Anda sudah keluar sebelumnya',
+                'status_code' => 401
+            ], 401);
+        }
+
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'Logout Success'
+            'message' => 'Logout Success',
+            'status_code' => 200
         ], 200);
     }
 
@@ -80,7 +94,8 @@ class PatientController extends Controller
         if(!$user){
             return response()->json([
                 'status' => 'Error',
-                'message' => 'User not found'
+                'message' => 'User not found',
+                'status_code' => 404
             ], 404);
         }
 
@@ -124,7 +139,8 @@ class PatientController extends Controller
             'status' => 'Success',
             'message' => 'OTP sent',
             'otp' => $otp,
-            'phone_number' => $phone_number
+            'phone_number' => $phone_number,
+            'status_code' => 200
         ], 200);
     }
 
@@ -139,7 +155,9 @@ class PatientController extends Controller
         if(!$user){
             return response()->json([
                 'status' => 'Failed',
-                'message' => 'OTP yang anda masukkan salah'
+                'message' => 'OTP yang anda masukkan salah',
+                'status_code' => 401
+
             ], 401);
         }
     
@@ -165,7 +183,8 @@ class PatientController extends Controller
         if(!$user){
             return response()->json([
                 'status' => 'Failed',
-                'message' => 'Anda tidak berhak untuk mengubah sandi'
+                'message' => 'Anda tidak berhak untuk mengubah sandi',
+                'status_code' => 401
             ], 401);
         }
 
@@ -175,7 +194,8 @@ class PatientController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'Berhasil memperbarui sandi anda'
+            'message' => 'Berhasil memperbarui sandi anda',
+            'status_code' => 201
         ], 201);
     }
 

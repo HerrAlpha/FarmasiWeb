@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Patient\PatientController;
+use App\Http\Controllers\API\Patient\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,24 @@ use App\Http\Controllers\API\Patient\PatientController;
 Route::prefix('v1')->group(function(){
 
     Route::prefix('auth')->controller(PatientController::class)->group(function(){
-        Route::post('/masuk', 'login');
+        Route::post('/masuk', 'login'); // v1/auth/masuk
         Route::prefix('forgot-password')->group(function(){
-            Route::post('/send-otp', 'sendOTP');
-            Route::post('/validate-otp', 'validateOTP');
-            Route::post('/reset-password', 'resetPassword');
+            Route::post('/send-otp', 'sendOTP'); // v1/auth/forgot-password/send-otp
+            Route::post('/validate-otp', 'validateOTP'); // v1/auth/forgot-password/validate-otp
+            Route::post('/reset-password', 'resetPassword'); // v1/auth/forgot-password/reset-password
         });
+    });
+
+    Route::prefix('dashboard')->controller(DashboardController::class)->group(function(){
+        Route::get('/jadwal-obat/{id_pasien}', 'jadwalObat'); // v1/dashboard/jadwal-obat/{id_pasien}
     });
 
     Route::middleware(['auth:sanctum', 'pasien'])->group(function(){
         Route::prefix('auth')->controller(PatientController::class)->group(function(){
-            Route::post('/keluar', 'keluar');
+            Route::post('/keluar', 'keluar'); // v1/auth/keluar
         });
+
+        
 
     });
 });
