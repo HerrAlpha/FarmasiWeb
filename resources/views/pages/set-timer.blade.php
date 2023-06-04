@@ -34,8 +34,6 @@
                 <tr>
                     <th scope="col" style="width: 30%">Nama</th>
                     <th scope="col" style="width: 20%; text-align: center">Status</th>
-                    <th scope="col" style="width: 20%">Dibawah Pengawasan</th>
-                    <th scope="col" style="width: 20%; text-align: center">Klasifikasi</th>
                     <th scope="col" style="width: 10%; text-align: center">Opsi</th>
                 </tr>
             </thead>
@@ -55,12 +53,6 @@
                                 <span class="u-jadwal">Belum Terjadwal</span>
                             </div>
                             @endif
-                        </td>
-                        <td>
-                            {{ $d->pengawasan_dokter }}
-                        </td>
-                        <td style="text-align: center">
-                            {!! $d->classification($d->klasifikasi) !!}
                         </td>
                         <td style="text-align: center">
                             <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">

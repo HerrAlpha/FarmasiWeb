@@ -67,7 +67,7 @@
           <div class="col">
               <div class="card-addData">
                   <div class="card-body-data">
-                    <h5 class="card-title addData-h">Data Diri Pasien</h5>
+                    <h5 class="card-title addData-h pt-0">Data Diri Pasien</h5>
                     <hr class="int-l">
 
                     <input type="hidden" name="pengawasan_dokter" value="{{ auth()->user()->name }}">
@@ -87,18 +87,18 @@
                     </div>
 
                     <div class="mb-3 row">
-                      <label for="phone_number" class="col-sm-4 col-form-label">Nomor Telepon</label>
-                      <div class="align-items-end col-sm-8">
-                        <input type="text" name="phone_number" class="form-control int-lbl" id="phone_number" oninput="numberOnly(this.id);" maxlength="12" required>
-                      </div>
-                    </div>
-
-                    <div class="mb-3 row">
                       <label for="inputname" class="col-sm-4 col-form-label">Tanggal Lahir</label>
                       <div class="align-items-end col-sm-8">
                           <input name="tgl_lahir" type="text" class="form-control int-lbl" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
                       </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-4 col-form-label">Usia</label>
+                        <div class="align-items-end col-sm-8">
+
+                        </div>
+                      </div>
 
                     <div class="mb-3 row">
                       <label for="inputname" class="col-sm-4 col-form-label">Alamat</label>
@@ -127,28 +127,74 @@
 
                   </div>
                 </div>
+
+                <div class="card-addData">
+                    <div class="card-body">
+                      <h5 class="card-title addData-h">Riwayat Sakit</h5>
+                      <hr class="int-l">
+
+                      <div class="row">
+                        <label for="inputname" class="col-sm-4 col-form-label">HT</label>
+                        <div class="align-items-end col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hipertensi" id="hipertensi" value="Yes" required>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="inputname" class="col-sm-4 col-form-label">DM</label>
+                        <div class="align-items-end col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="diabetes_melitus" id="diabetes_melitus" value="Yes" required>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="inputname" class="col-sm-4 col-form-label">CKD</label>
+                        <div class="align-items-end col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="critical_kidney_disease" id="critical_kidney_disease" value="Yes" required>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="inputname" class="col-sm-4 col-form-label">Stroke</label>
+                        <div class="align-items-end col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="stroke" id="stroke" value="Yes" required>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="inputname" class="col-sm-4 col-form-label">Lainnya</label>
+                        <div class="align-items-end col-sm-8">
+                            <div class="align-items-end">
+                                <input type="text" name="r_sakit" class="form-control int-lbl" id="" required>
+                              </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                </div>
+
           </div>
           <div class="col">
               <div class="card-addData">
                   <div class="card-body">
-                    <h5 class="card-title addData-h">Medical Check-Up</h5>
+                    <h5 class="card-title addData-h pt-0">Informasi Pasien</h5>
                     <hr class="int-l">
 
                     <div class="mb-3 row">
-                      <label for="inputname" class="col-sm-4 col-form-label">Tekanan Darah</label>
-
-                      <div class="align-items-end col-3">
-                        <input type="text" class="form-control int-drh"  name="td_tds" id="td_tds" oninput="numberOnly(this.id);" maxlength="3" required>
-                      </div>
-
-                      <label for="inputname" class="col-1 col-form-label drh"> /</label>
-
-                      <div class="align-items-end col-sm-2">
-                          <input type="text" class="form-control int-drh"  name="td_tdd" id="td_tdd" oninput="numberOnly(this.id);" maxlength="3" required>
+                        <label for="phone_number" class="col-sm-4 col-form-label">Nomor HP</label>
+                        <div class="align-items-end col-sm-8">
+                          <input type="text" name="phone_number" class="form-control int-lbl" id="phone_number" oninput="numberOnly(this.id);" maxlength="12" required>
                         </div>
-
-                      <label for="inputname" class="col-sm-1 col-form-label">mmHg</label>
-                    </div>
+                      </div>
 
                     <div class="mb-3 row">
                       <label for="inputname" class="col-sm-4 col-form-label">Berat badan</label>
@@ -166,111 +212,153 @@
                       <label for="inputname" class="col-sm-4 col-form-label">cm</label>
                     </div>
 
-                    <div class="mb-3 row">
-                      <label for="inputname" class="col-sm-4 col-form-label">Heart Rate</label>
-                      <div class="align-items-end col-sm-4">
-                        <input type="name" class="form-control int-lbl" id="h_rate" oninput="numberOnly(this.id);" name="h_rate" maxlength="3" required>
-                      </div>
-                      <label for="inputname" class="col-sm-4 col-form-label">bpm</label>
+                    <div class="col">
+                        <label for="inputname" class="col-form-label">Tingkat Pendidikan Terakhir</label>
+                        <div class="align-items-end col-sm-6 row">
+
+                            <div class="d-flex flex-column mb-3">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <div class="p-2">SD <br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="t_pendidikan" id="t_pendidikan1" value="Yes" required>
+                                        </div>
+                                    </div>
+                                    <div class="p-2">SMP <br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="t_pendidikan" id="t_pendidikan2" value="Yes" required>
+                                        </div>
+                                    </div>
+                                    <div class="p-2">SMA <br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="t_pendidikan" id="t_pendidikan3" value="Yes" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+                        <label for="inputname" class="col-form-label">Pekerjaan</label>
+                        <div class="align-items-end col-sm-10 row">
+
+                            <div class="d-flex flex-column">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <div class="p-2">PNS <br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="pekerjaan" id="pekerjaan1" value="Yes" required>
+                                        </div>
+                                    </div>
+                                    <div class="p-2">Swasta <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="pekerjaan" id="pekerjaan2" value="Yes" required>
+                                            </div>
+                                    </div>
+                                    <div class="p-2">Peg. Swasta <br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="pekerjaan" id="pekerjaan3" value="Yes" required>
+                                        </div>
+                                    </div>
+                                    <div class="p-2">Wiraswasta <br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="pekerjaan" id="pekerjaan4" value="Yes" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                   </div>
                 </div>
-          </div>
-        </div>
 
-        <div class="">
-          <div class="card-addData">
-              <div class="card-body">
-                <h5 class="card-title addData-h">Lifestyle</h5>
-                <hr class="int-l">
 
-                <div class="mb-3 row">
+                <div class="card-addData">
+                    <div class="card-body">
+                      <h5 class="card-title addData-h pt-0">Lifestyle</h5>
+                      <hr class="int-l">
 
-                  <div class="col">
-                      <label for="inputname" class="col-form-label">Apakah pasien sedang atau pernah melakukan diet?</label>
-                      <div class="align-items-end col-sm-8 row">
+                      <div class="mb-3">
 
-                          <div class="col-2">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="diet" id="diet1" value="Yes" required>
-                                  <label class="form-check-label" for="diet1">
-                                      Ya
-                                  </label>
+                            <label for="inputname" class="col-form-label">Apakah pasien merokok?</label>
+                            <div class="align-items-end row">
+
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cigarettes" id="cigarettes1" value="Yes" required>
+                                        <label class="form-check-label" for="cigarettes1">
+                                            Ya
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cigarettes" id="cigarettes2" value="No" required>
+                                        <label class="form-check-label" for="cigarettes2">
+                                            Tidak
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label for="inputname" class="col-form-label">Apakah pasien rutin olahraga?</label>
+                            <div class="align-items-end row">
+
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="olahraga" id="olahraga1" value="Rutin" required>
+                                        <label class="form-check-label" for="olahraga1">
+                                            Rutin
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="olahraga" id="olahraga2" value="Jarang" required>
+                                        <label class="form-check-label" for="olahraga2">
+                                            Jarang
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="olahraga" id="olahraga3" value="Tidak" required>
+                                        <label class="form-check-label" for="olahraga3">
+                                            Tidak
+                                        </label>
+                                    </div>
+                                </div>
+
                               </div>
-                          </div>
-                          <div class="col-2">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="diet" id="diet2" value="No" required>
-                                  <label class="form-check-label" for="diet2">
-                                      Tidak
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
 
-                      <label for="inputname" class="col-form-label">Apakah pasien pernah mengkonsumsi alkohol?</label>
-                      <div class="align-items-end col-sm-8 row">
 
-                          <div class="col-2">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="alcohol" id="alcohol1" value="Yes" required>
-                                  <label class="form-check-label" for="alcohol1">
-                                      Ya
-                                  </label>
-                              </div>
-                          </div>
-                          <div class="col-2">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="alcohol" id="alcohol2" value="No" required>
-                                  <label class="form-check-label" for="alcohol2">
-                                      Tidak
-                                  </label>
-                              </div>
-                          </div>
-
-                      </div>
-
-                  </div>
-
-                  <div class="col">
-                      <label for="inputname" class="col-form-label">Apakah pasien pernah merokok?</label>
-                      <div class="align-items-end col-sm-8 row">
-
-                          <div class="col-2">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="cigarettes" id="cigarettes1" value="Yes" required>
-                                  <label class="form-check-label" for="cigarettes1">
-                                      Ya
-                                  </label>
-                              </div>
-                          </div>
-                          <div class="col-2">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="cigarettes" id="cigarettes2" value="No" required>
-                                  <label class="form-check-label" for="cigarettes2">
-                                      Tidak
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
+                        </div>
+                    </div>
 
                 </div>
 
-              </div>
+                    </div>
+
+                    <div class="modal-footer modal-foot">
+                        <button type="submit " class="btn btn-int">Save</button>
+                </form>
+                    <button type="button" class="btn btn-dcl" data-bs-dismiss="modal">Close</button>
+                </div>
+
+                </div>
+
+
           </div>
-      </div>
+
+        </div>
 
       </div>
-      <div class="modal-footer modal-foot">
-              <button type="submit " class="btn btn-int">Save</button>
-      </form>
-          <button type="button" class="btn btn-dcl" data-bs-dismiss="modal">Close</button>
-      </div>
+
     </div>
-  </div>
-
-</div>
 

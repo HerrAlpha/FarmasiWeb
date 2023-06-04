@@ -48,7 +48,6 @@
             <th scope="col" style="width: 5%">Stok obat</th>
             <th scope="col" style="width: 15%">Pengawasan</th>
             <th scope="col" style="width: 10%; text-align: center">Last Login</th>
-            <th scope="col" style="width: 20%; text-align: center">Klasifikasi</th>
             <th scope="col" style="width: 20%; text-align: center">Opsi</th>
         </tr>
         </thead>
@@ -82,9 +81,6 @@
                 </td>
                 <td style="text-align: center">
                     {{ $d->created_at->isoformat('dddd, D MMMM Y') }}
-                </td>
-                <td style="text-align: center">
-                    {!! $d->classification($d->klasifikasi) !!}
                 </td>
                 <td style="text-align: center">
                     <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">

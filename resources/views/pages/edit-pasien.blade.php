@@ -376,12 +376,15 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th scope="col">Tekanan Darah</th>
                                     <th scope="col">Kolesterol</th>
+                                    <th scope="col">HDL</th>
                                     <th scope="col">Kreatinin</th>
                                     <th scope="col">Gula Darah Puasa</th>
                                     <th scope="col">Gula Darah Sewaktu</th>
                                     <th scope="col">Gula Darah 2 jam PP</th>
                                     <th scope="col">hbA1c</th>
+                                    <th scope="col">Klasifikasi</th>
                                     <th scope="col">Log Data</th>
                                 </tr>
                                 </thead>
@@ -390,7 +393,13 @@
                                     @foreach ($lab as $l)
                                     <tr>
                                         <td scope="row">
+                                            {{ $l->td_tds}} / {{ $l->td_tdd }} mmHg
+                                        </td>
+                                        <td>
                                             {{ $l->kolesterol}} mg/dl
+                                        </td>
+                                        <td>
+                                            {{ $l->hdl}} mg/dl
                                         </td>
                                         <td>
                                             {{ $l->kreatinin }} µmol/L
@@ -406,6 +415,9 @@
                                         </td>
                                         <td>
                                             {{ $l->hbA1c }} %
+                                        </td>
+                                        <td>
+                                            {{ $l->klasifikasi }}
                                         </td>
                                         <td>
                                             {{ $l->created_at->isoformat('dddd, D MMMM Y') }}
@@ -440,7 +452,9 @@
                                     <th scope="col">Jumlah Konsumsi per-Hari</th>
                                     <th scope="col">Waktu Konsumsi</th>
                                     <th scope="col">Sesudah/Sebelum Makan</th>
-                                    <th scope="col">Stok Pada Pasien</th>
+                                    <th scope="col">Jumlah Obat</th>
+                                    <th scope="col">Kekuatan Obat</th>
+                                    <th scope="col">Bentuk Obat</th>
                                     <th scope="col">TanggaL Pemberian Obat</th>
                                     <th></th>
                                 </tr>
@@ -450,7 +464,9 @@
                                     @foreach ($obat as $o)
                                     <tr>
                                         <th scope="row">
-                                            {{ $o->nama_obat}}
+                                            <a href="#" class="psn_dtl" type="button" data-bs-toggle="modal" data-bs-target="#detMedic">
+                                                {{ $o->nama_obat}}
+                                            </a>
                                         </th>
                                         <td>
                                             {{ $o->dosis_harian }}
@@ -463,6 +479,12 @@
                                         </td>
                                         <td>
                                             {{ $o->jumlah_obat }}
+                                        </td>
+                                        <td>
+                                            {{ $o->kekuatan }}
+                                        </td>
+                                        <td>
+                                            {{ $o->bentuk }}
                                         </td>
                                         <td>
                                             {{ $o->created_at->isoformat('dddd, D MMMM Y') }}
@@ -643,11 +665,35 @@
                             </div>
 
                             <div class="mb-3 row">
+                                <label for="inputname" class="col-sm-5 col-form-label">HDL</label>
+                                <div class="align-items-end col-sm-4">
+                                  <input type="name" class="form-control int-lbl" id="kl" oninput="numberOnly(this.id);" name="hdl" value="{{ $l->kolesterol}}" required>
+                                </div>
+                                <label for="inputname" class="col-sm-3 col-form-label">mg/dl</label>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputname" class="col-sm-5   col-form-label">Tekanan Darah</label>
+
+                                <div class="align-items-end col-2">
+                                  <input type="text" class="form-control int-drh"  name="td_tds" id="td_tds" oninput="numberOnly(this.id);" maxlength="3" value="{{ $l->td_tds}}" required>
+                                </div>
+
+                                <label for="inputname" class="col-1 col-form-label drh"> /</label>
+
+                                <div class="align-items-end col-sm-2">
+                                    <input type="text" class="form-control int-drh"  name="td_tdd" id="td_tdd" oninput="numberOnly(this.id);" maxlength="3" value="{{ $l->td_tdd}}" required>
+                                  </div>
+
+                                <label for="inputname" class="col-sm-1 col-form-label">mmHg</label>
+                            </div>
+
+                            <div class="mb-3 row">
                                 <label for="inputname" class="col-sm-5 col-form-label">Kreatinin</label>
                                 <div class="align-items-end col-sm-4">
                                   <input type="name" class="form-control int-lbl" id="kr" oninput="numberOnly(this.id);" name="kreatinin" value="{{ $l->kreatinin }}" required>
                                 </div>
-                                <label for="inputname" class="col-sm-3 col-form-label">µmol/L</label>
+                                <label for="inputname" class="col-sm-3 col-form-label">U/L</label>
                             </div>
 
                             <div class="mb-3 row">
@@ -723,11 +769,35 @@
                             </div>
 
                             <div class="mb-3 row">
+                                <label for="inputname" class="col-sm-5 col-form-label">HDL</label>
+                                <div class="align-items-end col-sm-4">
+                                  <input type="name" class="form-control int-lbl" id="hdl" oninput="numberOnly(this.id);" name="hdl" required>
+                                </div>
+                                <label for="inputname" class="col-sm-3 col-form-label">mg/dl</label>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputname" class="col-sm-5   col-form-label">Tekanan Darah</label>
+
+                                <div class="align-items-end col-2">
+                                  <input type="text" class="form-control int-drh"  name="td_tds" id="td_tds" oninput="numberOnly(this.id);" maxlength="3" required>
+                                </div>
+
+                                <label for="inputname" class="col-1 col-form-label drh"> /</label>
+
+                                <div class="align-items-end col-sm-2">
+                                    <input type="text" class="form-control int-drh"  name="td_tdd" id="td_tdd" oninput="numberOnly(this.id);" maxlength="3" required>
+                                  </div>
+
+                                <label for="inputname" class="col-sm-1 col-form-label">mmHg</label>
+                            </div>
+
+                            <div class="mb-3 row">
                                 <label for="inputname" class="col-sm-5 col-form-label">Kreatinin</label>
                                 <div class="align-items-end col-sm-4">
                                   <input type="name" class="form-control int-lbl" id="kr" oninput="numberOnly(this.id);" name="kreatinin" required>
                                 </div>
-                                <label for="inputname" class="col-sm-3 col-form-label">µmol/L</label>
+                                <label for="inputname" class="col-sm-3 col-form-label">U/L</label>
                             </div>
 
                             <div class="mb-3 row">
@@ -810,7 +880,7 @@
 
                           <div class="mb-3 row">
                             <label for="inputname" class="col-form-label">Jumlah Konsumsi per Hari</label>
-                            <div class=" input-group align-items-end">
+                            <div class="input-group align-items-end">
                                 <input type="text" id="dosis_harian" name="dosis_harian" class="form-control int-lbl" placeholder="Jumlah Konsumsi dalam 1 Hari" oninput="numberOnly(this.id);" aria-label="Recipient's username" aria-describedby="BJK" required>
                                 <a href="#" class="btn btn-int" onclick="addFields()" id="BJK"> Tambah Data</a> <br>
 
@@ -850,19 +920,69 @@
                           <hr class="int-l">
 
                           <div class="mb-3 row">
-                            <label for="inputname" class="col-sm-4 col-form-label">Resep Oleh</label>
-
-                            <div class="align-items-end col-sm-8">
-                                <label for="inputname" class="col-form-label">{{ auth()->user()->name }}</label>
-                            </div>
-                          </div>
-
-                          <div class="mb-3 row">
                             <label for="inputname" class="col-sm-4 col-form-label">Jumlah Obat</label>
-                            <div class="align-items-end col-sm-3">
-                              <input type="number" name="jumlah_obat" class="form-control int-lbl" id="bb" oninput="numberOnly(this.id);" required>
+                            <div class="align-items-end col-sm-8">
+                              <input type="text" name="jumlah_obat" class="form-control int-lbl" id="bb" oninput="numberOnly(this.id);" required>
                             </div>
                           </div>
+
+                          <div class="col">
+                            <label for="inputname" class="col-form-label">Kekuatan (Pilih Satu)</label>
+                            <div class="align-items-end col-sm-6 row">
+
+                                <div class="d-flex flex-column mb-3">
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <div class="p-2">mcg <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kekuatan" id="kekuatan1" value="mcg" required>
+                                            </div>
+                                        </div>
+                                        <div class="p-2">mg <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kekuatan" id="kekuatan2" value="mg" required>
+                                            </div>
+                                        </div>
+                                        <div class="p-2">g <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kekuatan" id="kekuatan3" value="g" required>
+                                            </div>
+                                        </div>
+                                        <div class="p-2">ml <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kekuatan" id="kekuatan4" value="ml" required>
+                                            </div>
+                                        </div>
+                                        <div class="p-2">% <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kekuatan" id="kekuatan5" value="%" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+                            <label for="inputname" class="col-form-label">Bentuk Obat (Pilih Satu)</label>
+
+                            <div class="mb-3 row align-items-end">
+                                    <select class="form-select form-control int-lbl align-items-end" name="bentuk">
+                                        <option selected>Pilih Bentuk Obat</option>
+                                            <option value="Tablet">Tablet</option>
+                                            <option value="Kapsul">Kapsul</option>
+                                            <option value="Sirup">Sirup</option>
+                                            <option value="" onclick="addlainnya()"><a href="#"  id="tbh" onclick="addlainnya()">Lainnya</a> </option>
+                                    </select>
+                            </div>
+
+                            <div class="mb-3 row align-items-end">
+                                <div id="lainnya"></div>
+                            </div>
+
+                        </div>
 
                         </div>
                       </div>
@@ -877,6 +997,65 @@
             </div>
         </div>
     </div>
+    </div>
+
+    {{-- Modal Detail Medicine --}}
+    <div class="modal fade" id="detMedic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="dellApolabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-input">
+                <div class="modal-header modal-head">
+                    <h1 class="modal-title" id="addDataLabel">Detail Obat</h1>
+                </div>
+
+                <div class="modal-body modal-bd">
+                    @foreach ($obat as $o)
+
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-6 col-form-label">Nama Generik</label>
+                        <div class="align-items-end col-sm-6">
+                            <label for="inputname" class="col-form-label">Nama Generik</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-6 col-form-label">Nama Merk</label>
+                        <div class="align-items-end col-sm-6">
+                            <label for="inputname" class="col-form-label">{{ $o->nama_obat }}</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-6 col-form-label">Kekuatan Obat</label>
+                        <div class="align-items-end col-sm-6">
+                            <label for="inputname" class="col-form-label">{{ $o->kekuatan }}</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-6 col-form-label">Bentuk Sediaan</label>
+                        <div class="align-items-end col-sm-6">
+                            <label for="inputname" class="col-form-label">{{ $o->bentuk }}</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-6 col-form-label">Jumlah Obat</label>
+                        <div class="align-items-end col-sm-6">
+                            <label for="inputname" class="col-form-label">{{ $o->jumlah_obat }}</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-6 col-form-label">Frekuensi</label>
+                        <div class="align-items-end col-sm-6">
+                            <label for="inputname" class="col-form-label">{{ $o->dosis_harian }} / {{ $o->wkatu }}</label>
+                        </div>
+                    </div>
+
+                    @endforeach
+                </div>
+
+                <div class="modal-footer modal-foot justify-content-end">
+                    <button type="button" class="btn btn-dcl" data-bs-dismiss="modal">Close</button>
+                </div>
+
+          </div>
+        </div>
     </div>
 
   </main><!-- End #main -->

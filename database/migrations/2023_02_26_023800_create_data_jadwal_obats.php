@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('waktu_minum');
             $table->string('waktu');
             $table->string('jumlah_obat');
-            $table->string('pengawasan')->default('-');
+            $table->string('kekuatan');
+            $table->string('bentuk');
             $table->timestamps();
         });
     }

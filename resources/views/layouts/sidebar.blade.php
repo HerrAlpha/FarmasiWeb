@@ -22,12 +22,12 @@
       </a>
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link {{ Route::currentRouteName() == 'stock-obat' ? '' : 'collapsed' }}" href="/stock-obat">
           <i class="bi bi-chat-left-dots"></i>
           <span>Stok Obat</span>
         </a>
-      </li>
+      </li> --}}
     <hr>
 
 

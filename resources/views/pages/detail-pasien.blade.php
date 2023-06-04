@@ -191,14 +191,10 @@
                         <h5 class="header-dpasien">History Life</h5>
                         <div class="row">
                             <div class="col-1">
-                                Merokok <br>
-                                Diet <br>
-                                Alkohol
+                                Merokok
                             </div>
                             <div class="col">
-                                {!! $d->cigarettes($d->cigarettes) !!} <br>
-                                {!! $d->diet($d->diet) !!} <br>
-                                {!! $d->alcohol($d->alcohol) !!}
+                                {!! $d->cigarettes($d->cigarettes) !!}
                             </div>
                         </div>
                     @endforeach

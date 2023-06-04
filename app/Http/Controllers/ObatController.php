@@ -79,7 +79,6 @@ class ObatController extends Controller
         return redirect()->route('stock-obat')->with('success', 'Data berhasil dihapus!');
     }
 
-
     //Controller Medicine Pasien
     public function store_med(Request $request){
         $dataobat = request()->all();

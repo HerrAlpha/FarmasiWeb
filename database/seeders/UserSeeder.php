@@ -17,12 +17,10 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin',
             'username' => 'admin',
-            'email' => 'admin@gmail.com',
             'status' => 1,
             'password' => Hash::make('123'),
             'role' => 'Admin',
-            'phone_number' => '082198403940',
-            'address' => 'kota malang'
+            'phone_number' => '082198403940'
         ]);
     }
 }

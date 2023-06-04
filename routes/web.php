@@ -46,18 +46,18 @@ Route::middleware([
 
         Route::get('/pasien', [HomeController::class, 'pasien'])->name('pasien');
 
-        //Menu Stock Obat
-        Route::get('/stock-obat', [ObatController::class, 'stock_obat'])->name('stock-obat');
+        // //Menu Stock Obat
+        // Route::get('/stock-obat', [ObatController::class, 'stock_obat'])->name('stock-obat');
 
-        Route::post('/add-dataobat', [ObatController::class, 'add_obat'])->name('stock-obat');
+        // Route::post('/add-dataobat', [ObatController::class, 'add_obat'])->name('stock-obat');
 
-        Route::get('/detail-obat-{slug}', [ObatController::class, 'detail_obat'])->name('stock-obat');
+        // Route::get('/detail-obat-{slug}', [ObatController::class, 'detail_obat'])->name('stock-obat');
 
-        Route::get('/edit-obat-{slug}', [ObatController::class, 'edit_obat'])->name('stock-obat');
+        // Route::get('/edit-obat-{slug}', [ObatController::class, 'edit_obat'])->name('stock-obat');
 
-        Route::post('/update-obat', [ObatController::class, 'update_obat'])->name('stock-obat');
+        // Route::post('/update-obat', [ObatController::class, 'update_obat'])->name('stock-obat');
 
-        Route::get('/delete-obat-{slug}', [ObatController::class, 'delete_obat'])->name('stock-obat');
+        // Route::get('/delete-obat-{slug}', [ObatController::class, 'delete_obat'])->name('stock-obat');
 
         //Menu Pasien
         Route::post('/submit', [HomeController::class, 'store_pasien'])->name('store_pasien');

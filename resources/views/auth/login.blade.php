@@ -46,11 +46,11 @@
                                     <form action="{{ route('login') }}" method="post">
                                         @csrf
                                         <div class="form-floating mb-3">
-                                            <input name="email" type="email" id="email" class="input-login form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" placeholder="email" value="{{ old('email') }}" required>
-                                            <label for="email" value="{{ __('Email') }}">Email</label>
-                                            @if ($errors->has('email'))
+                                            <input name="username" type="username" id="username" class="input-login form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" id="username" placeholder="username" value="{{ old('username') }}" required>
+                                            <label for="username" value="{{ __('Username') }}">Username</label>
+                                            @if ($errors->has('Username'))
                                                 <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('email') }}</strong>
+                                                <strong>{{ $errors->first('Username') }}</strong>
                                                 </span>
                                             @endif
                                         </div>

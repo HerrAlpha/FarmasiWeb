@@ -18,6 +18,20 @@ $(document).ready(function(){
     });
 });
 
+
+function addlainnya(){
+    var container = document.getElementById("lainnya");
+
+    var input = document.createElement("input");
+        input.id = "bentuk";
+        input.type = "text";
+        input.name = "bentuk";
+        input.className = "form-control int-lbl";
+
+    input.placeholder = "Bentuk Obat";
+    container.appendChild(input);
+}
+
 function addFields(){
     // Generate a dynamic number of inputs
     var number = document.getElementById("dosis_harian").value;

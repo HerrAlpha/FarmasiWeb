@@ -40,7 +40,6 @@
                 <tr>
                     <th scope="col" style="width: 40%">Nama</th>
                     <th scope="col" style="width: 25%; text-align: center">Tanggal Input</th>
-                    <th scope="col" style="width: 25%; text-align: center">Klasifikasi</th>
                     <th scope="col" style="width: 10%; text-align: center">Opsi</th>
                 </tr>
             </thead>
@@ -54,9 +53,6 @@
                         </td>
                         <td style="text-align: center">
                             {{ $d->created_at->isoformat('dddd, D MMMM Y') }}
-                        </td>
-                        <td style="text-align: center">
-                            {!! $d->classification($d->klasifikasi) !!}
                         </td>
                         <td style="text-align: center">
                             <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">

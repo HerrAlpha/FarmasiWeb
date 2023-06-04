@@ -35,7 +35,6 @@
                     <th scope="col" style="width: 25%">Nama</th>
                     <th scope="col" style="width: 20%">Nama Obat</th>
                     <th scope="col" style="width: 15%; text-align: center">Stock Obat</th>
-                    <th scope="col" style="width: 20%; text-align: center">Klasifikasi</th>
                     <th scope="col" style="width: 10%; text-align: center">Opsi</th>
                 </tr>
             </thead>
@@ -62,9 +61,6 @@
                             </div>
                         @endforeach
 
-                    </td>
-                    <td style="text-align: center">
-                        {!! $d->classification($d->klasifikasi) !!}
                     </td>
                     <td style="text-align: center">
                         <a href="/edit-pasien-{{ $d->slug }}" class="btn edit-pasien">

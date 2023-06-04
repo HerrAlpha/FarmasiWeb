@@ -16,12 +16,16 @@ return new class extends Migration
         Schema::create('data_labs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('data_id_pasien')->constrained('data_pasiens')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('td_tds');
+            $table->string('td_tdd');
             $table->string('kolesterol');
+            $table->string('hdl');
             $table->string('kreatinin');
             $table->string('gd_puasa');
             $table->string('gd_sewaktu');
             $table->string('gd_2jam_pp');
             $table->string('hbA1c');
+            $table->string('klasifikasi');
             $table->timestamps();
         });
     }

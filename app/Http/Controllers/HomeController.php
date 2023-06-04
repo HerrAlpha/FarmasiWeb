@@ -48,7 +48,6 @@ class HomeController extends Controller
         $datauser = request()->all();
 
         $klasifikasi = New DataPasien;
-        $datauser['klasifikasi'] = $klasifikasi->klasifikasi($request['td_tds'], $request['td_tdd']);
         $datauser['data_id_user'] = Str::slug($user['id']);
         $datauser['slug'] = Str::slug(request('name'));
         $newpasien = DataPasien::create($datauser);
@@ -89,9 +88,6 @@ class HomeController extends Controller
     public function store_edit(Request $request){
         $dataupdate = request()->except(['_token']);
         $slug = $dataupdate['slug'];
-
-        $klasifikasi = New DataPasien;
-        $dataupdate['klasifikasi'] = $klasifikasi->klasifikasi($request['td_tds'], $request['td_tdd']);
 
         DataPasien::where('slug', $slug)
                 ->update($dataupdate);

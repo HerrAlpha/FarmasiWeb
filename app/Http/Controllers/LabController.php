@@ -17,9 +17,11 @@ class LabController extends Controller
         $datalab = request()->all();
 
         $slug = $request->slug;
+        $klasifikasi = New DataLab;
 
         $user = DataPasien::where('slug', $slug)->value('id');
         $datalab['data_id_pasien'] = $user;
+        $datalab['klasifikasi'] = $klasifikasi->klasifikasi($request['td_tds'], $request['td_tdd']);
         $newdatalab = DataLab::create($datalab);
         return Redirect::back()->with('success', 'Data berhasil ditambahkan!');
     }
@@ -37,6 +39,8 @@ class LabController extends Controller
         $lab->delete();
 
         $datalab['data_id_pasien'] = $user;
+        $klasifikasi = New DataLab;
+        $datalab['klasifikasi'] = $klasifikasi->klasifikasi($request['td_tds'], $request['td_tdd']);
         $newdatalab = DataLab::create($datalab);
         return Redirect::back()->with('success', 'Data berhasil diganti!');
     }
