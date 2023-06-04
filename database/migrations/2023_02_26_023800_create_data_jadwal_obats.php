@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('data_id_pasien')->constrained('data_pasiens')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('nama_obat');
+            $table->string('nama_merek');
             $table->string('dosis_harian');
             $table->string('waktu_minum');
             $table->string('waktu');

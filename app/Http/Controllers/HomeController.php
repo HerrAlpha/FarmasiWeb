@@ -69,7 +69,7 @@ class HomeController extends Controller
         $data = Datapasien::where('slug', $slug)->get();
         $id = $data->value('id');
         $lab = DataLab::where('data_id_pasien', $id)->get();
-        $obat = DataJadwalObat::where('data_id_pasien', $id)->get();
+        $obat = DataJadwalObat::where('data_id_pasien', $id)->groupBy(['nama_obat', 'nama_merek', 'created_at', 'dosis_harian', 'jumlah_obat', 'kekuatan', 'bentuk', 'waktu_minum'])->get(['nama_obat', 'nama_merek', 'dosis_harian', 'jumlah_obat', 'kekuatan', 'bentuk', 'created_at', 'waktu_minum']);
         $sch = SchedulePasien::where('data_id_pasien', $id)->get();
         $dataobat = DataObat::get();
         return view('pages/detail-pasien', ['data' => $data, 'obat' => $obat, 'lab' => $lab, 'sch' => $sch, 'dataobat' => $dataobat]);
@@ -79,7 +79,7 @@ class HomeController extends Controller
         $data = Datapasien::where('slug', $slug)->get();
         $id = $data->value('id');
         $lab = DataLab::where('data_id_pasien', $id)->get();
-        $obat = DataJadwalObat::where('data_id_pasien', $id)->get();
+        $obat = DataJadwalObat::where('data_id_pasien', $id)->groupBy(['nama_obat', 'nama_merek', 'created_at', 'dosis_harian', 'jumlah_obat', 'kekuatan', 'bentuk', 'waktu_minum'])->get(['nama_obat', 'nama_merek', 'dosis_harian', 'jumlah_obat', 'kekuatan', 'bentuk', 'created_at', 'waktu_minum']);
         $sch = SchedulePasien::where('data_id_pasien', $id)->get();
         $dataobat = DataObat::get();
         return view('pages/edit-pasien', ['data' => $data, 'obat' => $obat, 'lab' => $lab, 'sch' => $sch, 'dataobat' => $dataobat]);
@@ -95,7 +95,7 @@ class HomeController extends Controller
         $data = Datapasien::where('slug', $slug)->get();
         $id = $data->value('id');
         $lab = DataLab::where('data_id_pasien', $id)->get();
-        $obat = DataJadwalObat::where('data_id_pasien', $id)->get();
+        $obat = DataJadwalObat::where('data_id_pasien', $id)->groupBy('nama_obat')->groupBy('created_at')->get();
         $sch = SchedulePasien::where('data_id_pasien', $id)->get();
         $dataobat = DataObat::get();
 

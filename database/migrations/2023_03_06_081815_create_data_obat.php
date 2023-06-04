@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('data_obats', function (Blueprint $table) {
             $table->id();
             $table->string('nama_obat');
+            $table->string('nama_merek');
             $table->string('slug');
             $table->string('stock_obat');
             $table->string('gambar');

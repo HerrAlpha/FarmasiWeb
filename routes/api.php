@@ -28,12 +28,17 @@ Route::prefix('v1')->group(function(){
     });
 
     Route::prefix('dashboard')->controller(DashboardController::class)->group(function(){
-        Route::get('/jadwal-obat/{id_pasien}', 'jadwalObat'); // v1/dashboard/jadwal-obat/{id_pasien}
+        // Route::get('/jadwal-obat/{id_pasien}', 'jadwalObat'); // v1/dashboard/jadwal-obat/{id_pasien}
     });
+
 
     Route::middleware(['auth:sanctum', 'pasien'])->group(function(){
         Route::prefix('auth')->controller(PatientController::class)->group(function(){
             Route::post('/keluar', 'keluar'); // v1/auth/keluar
+        });
+
+        Route::prefix('dashboard')->controller(DashboardController::class)->group(function(){
+            Route::get('/jadwal-obat/{id_pasien}', 'jadwalObat'); // v1/dashboard/jadwal-obat/{id_pasien}
         });
 
         

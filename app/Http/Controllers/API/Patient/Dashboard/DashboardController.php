@@ -5,13 +5,14 @@ namespace App\Http\Controllers\API\Patient\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DataJadwalObat;
+use App\Models\RiwayatMinumObat;
 
 class DashboardController extends Controller
 {
     public function jadwalObat($id_pasien){
         
        // query pick nama obat where waktu as key
-        $data = DataJadwalObat::where('data_id_pasien', $id_pasien)->get(['nama_obat', 'waktu']);
+        $data = DataJadwalObat::where('data_id_pasien', $id_pasien)->orderBy('waktu', 'asc')->get(['id', 'nama_obat', 'waktu']);
         $data = $data->groupBy('waktu');
         $data = $data->map(function($item, $key){
             $item = $item->map(function($item, $key){
@@ -33,6 +34,41 @@ class DashboardController extends Controller
             'status_code' => 200
         ], 200);
     }
+
+    public function setRiwayatMinumObat(Request $request){
+        $request->validate([
+            'data_id_pasien' => 'required|exists:data_pasiens,id',
+            'data_id_jadwal_obat' => 'required|exists:data_jadwal_obats,id',
+            'status_minum' => 'required|boolean',
+            'keterangan' => 'nullable'
+        ]);
+
+        $riwayat = RiwayatMinumObat::create([
+            'data_id_pasien' => $request->data_id_pasien,
+            'data_id_jadwal_obat' => $request->data_id_jadwal_obat,
+            'status_minum' => true,
+            'keterangan' => $request->keterangan
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Data berhasil ditambahkan',
+            'data' => $riwayat,
+            'status_code' => 200
+        ], 200);
+    }
+
+    public function getRiwayatMinumObat($id_pasien){
+        $riwayat = RiwayatMinumObat::where('data_id_pasien', $id_pasien)->orderBy('created_at')->get();
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Data berhasil diambil',
+            'data' => $riwayat,
+            'status_code' => 200
+        ], 200);
+    }
+
 }
 
 

@@ -135,7 +135,7 @@
                                                     @foreach ($obat as $o)
                                                     <tr>
                                                         <th scope="row">
-                                                            {{ $o->nama_obat}}
+                                                            {{ $o->nama_obat}}, {{$o->nama_merek}}
                                                         </th>
                                                         <td>
                                                             {{ $o->jumlah_obat }}
@@ -448,9 +448,10 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Nama Obat</th>
+                                    <th scope="col">Nama Generik</th>
+                                    <th scope="col">Nama Merek</th>
                                     <th scope="col">Jumlah Konsumsi per-Hari</th>
-                                    <th scope="col">Waktu Konsumsi</th>
+                                    {{-- <th scope="col">Waktu Konsumsi</th> --}}
                                     <th scope="col">Sesudah/Sebelum Makan</th>
                                     <th scope="col">Jumlah Obat</th>
                                     <th scope="col">Kekuatan Obat</th>
@@ -469,11 +470,15 @@
                                             </a>
                                         </th>
                                         <td>
-                                            {{ $o->dosis_harian }}
+                                            {{ $o->nama_merek }}
+                                            
                                         </td>
                                         <td>
-                                            {{ $o->waktu }}
+                                            {{ $o->dosis_harian }}
                                         </td>
+                                        {{-- <td>
+                                            {{ $o->waktu }}
+                                        </td> --}}
                                         <td>
                                             {{ $o->waktu_minum }}
                                         </td>
@@ -868,11 +873,19 @@
 
                           <div class="mb-3 row">
                             <label for="inputname" class="col-sm-4 col-form-label">Nama Obat</label>
-                            <div class="col-sm-8 align-items-end">
+                            <div class="col-sm-4 align-items-end">
                                 <select class="form-select form-control int-lbl" name="nama_obat">
                                     <option selected>Pilih Nama Obat</option>
                                     @foreach ($dataobat as $do)
                                         <option value="{{ $do->nama_obat }}">{{ $do->nama_obat }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-sm-4 align-items-end">
+                                <select class="form-select form-control int-lbl" name="nama_merek">
+                                    <option selected>Pilih Nama Merek</option>
+                                    @foreach ($dataobat as $do)
+                                        <option value="{{ $do->nama_merek }}">{{ $do->nama_merek }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -1013,13 +1026,13 @@
                     <div class="mb-3 row">
                         <label for="inputname" class="col-sm-6 col-form-label">Nama Generik</label>
                         <div class="align-items-end col-sm-6">
-                            <label for="inputname" class="col-form-label">Nama Generik</label>
+                            <label for="inputname" class="col-form-label">{{ $o->nama_obat}}</label>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputname" class="col-sm-6 col-form-label">Nama Merk</label>
                         <div class="align-items-end col-sm-6">
-                            <label for="inputname" class="col-form-label">{{ $o->nama_obat }}</label>
+                            <label for="inputname" class="col-form-label">{{ $o->nama_merek }}</label>
                         </div>
                     </div>
                     <div class="mb-3 row">
